@@ -1,0 +1,67 @@
+
+# mt_type_id;man;series;article_nr
+
+[[columns]]
+name = "id"
+dtype = "string"
+required = true
+min_length = 1
+regex = "MT_.+"
+# custom_validator = "value == \"MT_DS_WorkTable\""
+custom_validator = """
+let x = value == "MT_DS_WorkTable";
+
+print("Hello from rhai :)");
+print(value);
+print(row);
+x
+"""
+
+[[columns]]
+name = "man"
+dtype = "string"
+required = true
+
+[[columns]]
+name = "program"
+dtype = "string"
+required = true
+
+[[columns]]
+name = "article_nr"
+dtype = "string"
+required = true
+
+
+[[columns]]
+name = "prm_set"
+dtype = "string"
+required = true
+
+[[columns]]
+name = "chprm_set"
+dtype = "string"
+required = true
+
+[[unique]]
+columns = ["id", "man", "program", "article_nr", "prm_set"]
+name = "unique article"
+
+
+[[foreign_keys]]
+columns = ["mt_type"]
+references = { file = "mt_type.csv", columns = ["id"] }
+name = "FK_CONSTRAINT_mt_type_REFERENCES_mt_type__id"
+
+
+[settings]
+delimiter = ";"
+comment = "#"
+encoding = "utf8"
+
+# dtype = "enum"
+# required = false
+# values = ["Blue", "Green", "Red"]
+
+# min = 0
+# max = 1

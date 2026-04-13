@@ -1,0 +1,48 @@
+
+
+[[columns]]
+name = "id"
+dtype = "string"
+required = true
+min_length = 1
+regex = "MT_.+"
+
+[[columns]]
+name = "name"
+dtype = "string"
+required = true
+
+[[columns]]
+name = "format"
+dtype = "enum"
+required = true
+values = ["ch", "chf", "chi", "f", "i", "fn", "na", "th", "cp", "lb"]
+
+[[columns]]
+name = "default"
+dtype = "string"
+required = false
+
+
+[[columns]]
+name = "mode"
+dtype = "integer"
+required = true
+min_length = 1
+max_length = 16383
+# custom_validator TODO: we need to support some custom scripting languagr function calls to determine if current value is valid. pass it the current row and return true/false
+
+[[columns]]
+name = "filter"
+dtype = "string"
+required = false
+
+[[unique]]
+columns = ["id", "name"]
+name = "unique property per type"
+
+
+[settings]
+delimiter = ";"
+comment = "#"
+encoding = "utf8"

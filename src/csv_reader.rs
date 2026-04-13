@@ -1,0 +1,114 @@
+use crate::errors::CsvSchemaError;
+use std::{alloc::System, path::Path, str, time::SystemTime};
+
+use crate::csv_schema::{CsvSchema, CsvSchemaSettings};
+
+#[derive(Debug)]
+pub enum CsvRowError {
+    WrongColumnCount { expected: usize, actual: usize },
+    ParseError(String),
+    InvalidUtf8,
+    // add more as needed
+}
+
+#[derive(Debug)]
+pub struct ErrorRow {
+    pub line_no: u64,
+    pub reason: CsvRowError,
+}
+
+#[derive(Debug)]
+pub struct OkRow {
+    pub line_no: u64,
+    pub cells: Vec<String>,
+}
+
+fn csv_record_to_vec(row: &csv::StringRecord) -> Vec<String> {
+    /*
+    returns a vec of trimmed cell values from a csv string record
+     */
+    row.iter().map(|c| c.trim().to_string()).collect()
+}
+
+pub struct CsvReadResult {
+    pub ok_rows: Vec<OkRow>,
+    pub error_rows: Vec<ErrorRow>,
+    pub timestamp: SystemTime
+}
+
+impl CsvReadResult {
+    pub fn from_reader(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> Self {
+        read_csv(reader, schema)
+    }
+}
+
+pub fn read_csv(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> CsvReadResult {
+    /* reads the csv and returns a struct with successfuly parsed rows and error rows */
+    let expected_col_len = schema.columns.len();
+    let mut ok_rows = Vec::new();
+    let mut error_rows = Vec::new();
+
+    for record in reader.records() {
+        match record {
+            Ok(row) => {
+                let line_no = row.position().unwrap().line();
+                let row = csv_record_to_vec(&row);
+
+                if row.len() != expected_col_len {
+                    let result = ErrorRow {
+                        line_no,
+                        reason: CsvRowError::WrongColumnCount {
+                            expected: expected_col_len,
+                            actual: row.len(),
+                        },
+                    };
+                    error_rows.push(result);
+                } else {
+                    let result = OkRow {
+                        line_no,
+                        cells: row,
+                    };
+                    ok_rows.push(result);
+                }
+            }
+            Err(err) => {
+                // not all errors have position line no
+                let line_no = err.position().map(|v| v.line()).unwrap_or(0);
+                let result = ErrorRow {
+                    line_no,
+                    reason: CsvRowError::ParseError(err.to_string()),
+                };
+                error_rows.push(result);
+            }
+        }
+    }
+
+    CsvReadResult {
+        ok_rows,
+        error_rows,
+        timestamp: SystemTime::now()
+    }
+}
+
+pub fn build_csv_reader(
+    file_path: &str,
+    settings: &CsvSchemaSettings,
+) -> csv::Reader<std::fs::File> {
+    /**
+     * create a csv reader with custom settings
+     * encoding needs to be handlet later because csv reader only supports ut 8
+     */
+    let delim = settings.delimiter.as_bytes()[0];
+
+    let comment = settings.comment.as_bytes()[0];
+
+    let file = std::fs::File::open(file_path).expect(&format!("Cant open file: {}", file_path));
+    csv::ReaderBuilder::new()
+        .has_headers(false)
+        .delimiter(delim)
+        .double_quote(false)
+        .escape(Some(b'\\'))
+        // .flexible(true)
+        .comment(Some(comment))
+        .from_reader(file)
+}
