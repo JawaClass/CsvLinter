@@ -21,9 +21,9 @@ impl CachedCsvWorkspace {
         self.mapping.keys().map(|k| k.as_str()).collect()
     }
 
-    pub fn csv_or_panic(&self, filename: &str) -> &CachedCsv {
+    pub fn csv_or_panic(&mut self, filename: &str) -> &mut CachedCsv {
         self.mapping
-            .get(filename)
+            .get_mut(filename)
             .expect("filename does not exist in workspace")
     }
 
@@ -49,12 +49,12 @@ impl CachedCsvWorkspace {
 
         let schema = read_csv_schema(&schema_path).expect("Cant read CSV Schema");
 
-        let mut csv_reader = build_csv_reader(&csv, &schema.settings);
-        let csv_parsed = read_csv(&mut csv_reader, &schema);
+        // let mut csv_reader = build_csv_reader(&csv, &schema.settings);
+        // let csv_parsed = read_csv(&mut csv_reader, &schema);
 
         self.mapping.insert(
             csv.to_string(),
-            CachedCsv::new(csv.to_string(), csv_parsed, hashing::hash_vec),
+            CachedCsv::new(csv.to_string(), schema, hashing::hash_vec),
         );
     }
 }

@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use crate::rhai_custom_cell_validator;
 
 #[derive(Debug)]
-enum ValueValidationResult {
+pub enum ValueValidationResult {
     Ok {
         value: String,
     },
@@ -13,7 +13,7 @@ enum ValueValidationResult {
     },
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum CellValidationError {
     RequiredMissing,
     TooShort { min: u32, actual: usize },
@@ -27,7 +27,7 @@ pub enum CellValidationError {
     InvalidEnumValue { allowed: Vec<String> },
 }
 
-fn eval_enum(value: &str, values: &Vec<String>) -> ValueValidationResult {
+pub fn eval_enum(value: &str, values: &Vec<String>) -> ValueValidationResult {
     let is_valid_enum = values.contains(&value.to_string());
 
     return if is_valid_enum {
@@ -44,7 +44,7 @@ fn eval_enum(value: &str, values: &Vec<String>) -> ValueValidationResult {
     };
 }
 
-fn eval_string(
+pub fn eval_string(
     value: &str,
     min_length: &Option<u32>,
     max_length: &Option<u32>,
@@ -86,7 +86,7 @@ fn eval_string(
     if let Some(custom_validator) = custom_validator {
         let result =
             rhai_custom_cell_validator::run_custom_validator(custom_validator, value, &row_map);
-        println!("rhai script result: {:?}", result);
+        // println!("rhai script result: {:?}", result);
     }
 
     return if errors.is_empty() {
@@ -100,7 +100,8 @@ fn eval_string(
         }
     };
 }
-fn eval_integer(value: &str, min: &Option<i64>, max: &Option<i64>) -> ValueValidationResult {
+
+pub fn eval_integer(value: &str, min: &Option<i64>, max: &Option<i64>) -> ValueValidationResult {
     let mut errors = Vec::new();
 
     match value.parse::<i64>() {
@@ -140,7 +141,7 @@ fn eval_integer(value: &str, min: &Option<i64>, max: &Option<i64>) -> ValueValid
     }
 }
 
-fn eval_float(value: &str, min: &Option<f64>, max: &Option<f64>) -> ValueValidationResult {
+pub fn eval_float(value: &str, min: &Option<f64>, max: &Option<f64>) -> ValueValidationResult {
     let mut errors = Vec::new();
 
     match value.parse::<f64>() {

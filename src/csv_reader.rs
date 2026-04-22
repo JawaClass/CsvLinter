@@ -33,12 +33,16 @@ fn csv_record_to_vec(row: &csv::StringRecord) -> Vec<String> {
 pub struct CsvReadResult {
     pub ok_rows: Vec<OkRow>,
     pub error_rows: Vec<ErrorRow>,
-    pub timestamp: SystemTime
+    pub timestamp: SystemTime,
 }
 
 impl CsvReadResult {
     pub fn from_reader(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> Self {
         read_csv(reader, schema)
+    }
+
+    pub fn total_rows(&self) -> usize {
+        self.ok_rows.len() + self.error_rows.len()
     }
 }
 
@@ -86,29 +90,35 @@ pub fn read_csv(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> 
     CsvReadResult {
         ok_rows,
         error_rows,
-        timestamp: SystemTime::now()
+        timestamp: SystemTime::now(),
     }
 }
 
+#[derive(thiserror::Error, Debug)]
+pub enum CsvReadError {
+    #[error("Can not open CSV file.")]
+    Io(#[from] std::io::Error),
+}
 pub fn build_csv_reader(
     file_path: &str,
     settings: &CsvSchemaSettings,
-) -> csv::Reader<std::fs::File> {
-    /**
+) -> Result<csv::Reader<std::fs::File>, CsvReadError> {
+    /*
      * create a csv reader with custom settings
-     * encoding needs to be handlet later because csv reader only supports ut 8
+     * encoding needs to be handlet later because csv reader only supports utf8
      */
     let delim = settings.delimiter.as_bytes()[0];
 
     let comment = settings.comment.as_bytes()[0];
 
-    let file = std::fs::File::open(file_path).expect(&format!("Cant open file: {}", file_path));
-    csv::ReaderBuilder::new()
+    let file = std::fs::File::open(file_path)?;
+
+    Ok(csv::ReaderBuilder::new()
         .has_headers(false)
         .delimiter(delim)
         .double_quote(false)
         .escape(Some(b'\\'))
         // .flexible(true)
         .comment(Some(comment))
-        .from_reader(file)
+        .from_reader(file))
 }
