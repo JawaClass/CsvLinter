@@ -18,6 +18,7 @@ mod errors;
 mod hashing;
 mod regex_serializer;
 mod rhai_custom_cell_validator;
+// use crate::csv_cached::CachedCsvHasher;
 use crate::csv_workspace::CachedCsvWorkspace;
 use crate::regex_serializer::deserialize_regex_opt;
 
@@ -104,61 +105,57 @@ mod util;
 //     }
 // }
 
-fn build_fk_hashmap(rows: Vec<Vec<&str>>, hash_indizes: Vec<usize>) -> HashMap<u64, usize> {
-    /*
-    iterates over all rows, builds a hash based on hash_indizes and returns the hashmap mapping fk hash to row
-     */
-    let mut map: HashMap<u64, usize> = HashMap::new();
+// fn build_fk_hashmap(rows: Vec<Vec<&str>>, hash_indizes: Vec<usize>) -> HashMap<u64, usize> {
+//     /*
+//     iterates over all rows, builds a hash based on hash_indizes and returns the hashmap mapping fk hash to row
+//      */
+//     let mut map: HashMap<u64, usize> = HashMap::new();
 
-    if rows.is_empty() {
-        return map;
-    }
+//     if rows.is_empty() {
+//         return map;
+//     }
 
-    let highest_idx = *hash_indizes.iter().max().expect("Expected non empty vec");
+//     let highest_idx = *hash_indizes.iter().max().expect("Expected non empty vec");
 
-    assert!(highest_idx < rows.len());
+//     assert!(highest_idx < rows.len());
 
-    let row_len = rows[0].len();
+//     // todo get from ok row method
+//     // let row_len = rows[0].len();
 
-    let mut bitmask = vec![false; row_len];
+//     // let mut bitmask = vec![false; row_len];
 
-    for i in hash_indizes {
-        bitmask[i] = true;
-    }
+//     // for i in hash_indizes {
+//     //     bitmask[i] = true;
+//     // }
 
-    for (idx, row) in rows.iter().enumerate() {
-        // overwrite duplicate hashes. we only need to know if they exist
-        let hash_source: Vec<&str> = row
-            .iter()
-            .enumerate()
-            .filter(|(idx, _)| bitmask[*idx])
-            .map(|(_, b)| *b)
-            .collect();
+//     // for (idx, row) in rows.iter().enumerate() {
+//     //     // overwrite duplicate hashes. we only need to know if they exist
+//     //     let hash_source: Vec<&str> = row
+//     //         .iter()
+//     //         .enumerate()
+//     //         .filter(|(idx, _)| bitmask[*idx])
+//     //         .map(|(_, b)| *b)
+//     //         .collect();
 
-        let hash = hashing::hash_vec(&hash_source);
-        map.insert(hash, idx);
-    }
+//     //     let hash = hashing::hash_vec(&hash_source);
+//         map.insert(hash, idx);
+//     }
 
-    map
-}
+//     map
+// }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut cached_workspace = CachedCsvWorkspace::new();
+    let mut workspace = CachedCsvWorkspace::new();
 
-    cached_workspace.add_csv_file("mt_article.csv", "schema.mt_article.toml");
+    workspace.add_csv_file("mt_article.csv", "schema.mt_article.toml");
+    workspace.csv("mt_article.csv").load()?;
+    workspace.prepare_fk_validation_for("mt_article.csv")?;
 
-    println!("{:?}", cached_workspace.files());
+    workspace.csv("mt_article.csv").prepare_validation()?;
 
-    let csv_article_cache = cached_workspace.csv_or_panic("mt_article.csv");
-    csv_article_cache.load();
-    let csv_article = csv_article_cache.csv()?;
+    workspace.validate_csv("mt_article.csv");
 
-    println!("csv rows len {:?}", csv_article.total_rows());
-    // input!("added file");
-
-    csv_article_cache.validate_rows();
-
-    let validated = &csv_article_cache.validated_rows;
+    let validated = &workspace.csv("mt_article.csv").get_validated_rows()?;
 
     println!("validated rows:{:?}", validated.len());
     println!("{:#?}", validated);
@@ -166,210 +163,4 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Program finished.");
 
     Ok(())
-
-    // let mut line_eval_results: Vec<LineEvalResult> = Vec::new();
-
-    // let unique_constraints: Vec<UniqueConstraint> = schema
-    //     .unique
-    //     .iter()
-    //     .map(|constraint| build_unique_constraint(&schema, constraint))
-    //     .collect();
-
-    // // unique row vec maps to index to line eval results
-    // let mut unique_hashmap: HashMap<u64, usize> = HashMap::new();
-
-    // let mut csv_reader = build_csv_reader(csv_path_string, &schema.settings);
-
-    // let mut filename2CachedCsv: HashMap<String, CachedCsv> = HashMap::new();
-
-    // let mut cashed_csv = CachedCsv {
-    //     filename: csv_path_string.to_string(),
-    //     hash_func: hashing::hash_vec,
-    //     hashed_rows: HashMap::new(),
-    //     rows: read_csv(&mut csv_reader, &schema),
-    // };
-
-    // cashed_csv.hash_rows_for(&[0]);
-
-    // // build hashed csv tables linked in foreign keys
-
-    // // check foreign key constraints...
-    // for fk in &schema.foreign_keys {
-    //     // fk.columns
-
-    //     // fk.references.columns
-    //     let file = &fk.references.file;
-    // }
-
-    // input!("press enter");
-
-    // let mut row_cnt: u64 = 0;
-
-    // for row in csv_reader.records() {
-    //     row_cnt += 1;
-
-    //     if let Ok(row) = row {
-    //         // println!("ROW: {:?}", row);
-
-    //         // skip empty lines
-    //         if row.is_empty() || row.len() == 1 && row[0].is_empty() {
-    //             continue;
-    //         }
-
-    //         let line_no = row.position().unwrap().line(); //record(); //line();
-
-    //         // println!("row: {:?}, line_no: {}", row, line_no);
-    //         // continue;
-
-    //         if row.len() != schema.columns.len() {
-    //             let line_eval_result = LineEvalResult::LineSkipped {
-    //                 line_no,
-    //                 reason: format!(
-    //                     "Invalid row length. expected: {}, actual: {} ",
-    //                     schema.columns.len(),
-    //                     row.len()
-    //                 ),
-    //             };
-    //             line_eval_results.push(line_eval_result);
-    //             continue;
-    //         }
-
-    //         // trim all cells once upfront
-    //         let trimmed_row: Vec<String> = row.iter().map(|c| c.trim().to_string()).collect();
-    //         // build the named map for rhai scripts
-    //         let row_map: HashMap<String, String> = schema
-    //             .columns
-    //             .iter()
-    //             .enumerate()
-    //             .map(|(idx, col)| (col.name.clone(), trimmed_row[idx].clone()))
-    //             .collect();
-
-    //         let mut cell_eval_results: Vec<CellEvalResult> = Vec::new();
-
-    //         let mut has_err = false;
-
-    //         let unique_constraints_len: usize = unique_constraints.len();
-    //         let mut line_unique_hash_vec_per_unique_constraint: Vec<Vec<&str>> =
-    //             vec![Vec::new(); unique_constraints_len];
-
-    //         for (idx, column_schema) in schema.columns.iter().enumerate() {
-    //             let cell = &row[idx];
-
-    //             let col_idx_human = (idx + 1) as u16;
-
-    //             // do single cell validation
-    //             let eval_result: ValueValidationResult = column_schema.eval_value(cell, &row_map);
-
-    //             // check foreign key constraints...
-    //             for fk in &schema.foreign_keys {
-    //                 // fk.columns
-
-    //                 // fk.references.columns
-    //                 // fk.references.file
-    //             }
-
-    //             // for every unique constraint get bit mask and do check
-
-    //             for (idx, unique_con) in (&unique_constraints).iter().enumerate() {
-    //                 let bit_mask = &unique_con.bit_mask;
-
-    //                 let unique_hash_4_constraint =
-    //                     &mut line_unique_hash_vec_per_unique_constraint[idx];
-
-    //                 if bit_mask[idx] == 1 {
-    //                     // println!(
-    //                     //     "add col to hash form bit mask. {}, {}",
-    //                     //     idx, column_schema.name
-    //                     // );
-
-    //                     unique_hash_4_constraint.push(cell);
-    //                 }
-    //             }
-
-    //             if matches!(eval_result, ValueValidationResult::Error { .. }) {
-    //                 has_err = true;
-    //             }
-
-    //             let cell_eval_result = match eval_result {
-    //                 ValueValidationResult::Ok { value } => CellEvalResult::Ok {
-    //                     value: value,
-    //                     col_no: col_idx_human,
-    //                     line_no: line_no,
-    //                 },
-    //                 ValueValidationResult::Error { value, errors } => CellEvalResult::Error {
-    //                     value,
-    //                     col_no: col_idx_human,
-    //                     errors,
-    //                     line_no,
-    //                 },
-    //             };
-    //             cell_eval_results.push(cell_eval_result);
-    //         }
-
-    //         // check unique constraints
-
-    //         let mut unique_violation: Vec<UniqueViolation> = Vec::new();
-
-    //         let mut all_hash_values: Vec<u64> = Vec::new();
-
-    //         for (idx, line_unique_hash_vec) in line_unique_hash_vec_per_unique_constraint
-    //             .iter()
-    //             .enumerate()
-    //         {
-    //             let hash_val = hashing::hash_vec(&line_unique_hash_vec);
-
-    //             all_hash_values.push(hash_val);
-
-    //             if unique_hashmap.contains_key(&hash_val) {
-    //                 let violated_constraint = &unique_constraints[idx];
-    //                 let line_eval_res_idx = unique_hashmap[&hash_val];
-    //                 let other = &line_eval_results[line_eval_res_idx];
-
-    //                 // println!(
-    //                 //     "HASH already SEEN. Unique Constraint violated: {:#?},  {:?}, line_no: {}, other line_no: {}",
-    //                 //     violated_constraint.constraint.name,
-    //                 //     violated_constraint.constraint.columns,
-    //                 //     line_no,
-    //                 //     other.line_no()
-    //                 // );
-
-    //                 unique_violation.push(UniqueViolation {
-    //                     line_no: other.line_no(),
-    //                     constraint: violated_constraint.clone(),
-    //                 });
-
-    //                 has_err = true;
-    //             }
-    //         }
-
-    //         let line_eval_result = if has_err {
-    //             LineEvalResult::Error {
-    //                 line_no,
-    //                 cell_eval_results: cell_eval_results,
-    //                 unique_violations: unique_violation,
-    //             }
-    //         } else {
-    //             LineEvalResult::Ok {
-    //                 line_no,
-    //                 cell_eval_results: cell_eval_results,
-    //             }
-    //         };
-
-    //         line_eval_results.push(line_eval_result);
-    //         // store index to line eval result
-
-    //         for hash_val in all_hash_values {
-    //             unique_hashmap.insert(hash_val, line_eval_results.len() - 1);
-    //         }
-    //     } else {
-    //         println!("Cant read row {:?}", row);
-    //     }
-    // }
-
-    // println!(
-    //     "lines evaluated: {} :: {}",
-    //     line_eval_results.len(),
-    //     row_cnt
-    // );
-    // write_result(line_eval_results, true);
 }

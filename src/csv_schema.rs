@@ -7,36 +7,37 @@ use serde::{Deserialize, Serialize};
 use crate::csv_cell_validators::{
     ValueValidationResult, eval_enum, eval_float, eval_integer, eval_string,
 };
+use crate::csv_row_validators::ColumnSelection;
 use crate::regex_serializer::deserialize_regex_opt;
 
 use crate::errors::CsvSchemaError;
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct ForeignKey {
-    columns: Vec<String>,
-    references: ForeignReference,
-    name: String,
+    pub columns: Vec<String>,
+    pub references: ForeignReference,
+    pub name: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ForeignReference {
-    file: String,         // the CSV file being referenced
-    columns: Vec<String>, // the column in that CSV
+    pub file: String,         // the CSV file being referenced
+    pub columns: Vec<String>, // the column in that CSV
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct CsvSchemaSettings {
     pub comment: String,
     pub encoding: String,
     pub delimiter: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct CsvSchema {
     pub columns: Vec<CsvColumnSchema>,
     // if toml has no unique entry initialize with empty Vector
     #[serde(default)]
-    pub unique: Vec<SchemaUniqueSpecifier>,
+    pub unique: Vec<SchemaUniqueConstraint>,
     // if toml has no foreign_keys entry initialize with empty Vector
     #[serde(default)]
     pub foreign_keys: Vec<ForeignKey>,
@@ -44,20 +45,22 @@ pub struct CsvSchema {
 }
 
 impl CsvSchema {
-    pub fn unique_constraints(&self) -> Vec<Vec<usize>> {
-        let unique_names: HashSet<&str> = self.unique.iter().map(|s| s.name.as_str()).collect();
-        let all_unique = unique_names.len() == self.unique.len();
-        if !all_unique {
-            panic!("unique constraints have duplicate names!");
-        }
-
-        let ret: Vec<Vec<usize>> = self
-            .unique
+    pub fn named_col2col_selection(&self, named_columns: &Vec<String>) -> ColumnSelection {
+        named_columns
             .iter()
-            .map(|constraint| self.eval_indizes_unique_constraint(constraint))
-            .collect();
-
-        ret
+            .map(|col_name| {
+                self.col_name_to_col_idx(col_name).unwrap_or_else(|| {
+                    panic!(
+                        "Column '{}' not found in {:?}",
+                        col_name,
+                        self.columns
+                            .iter()
+                            .map(|col| col.name.clone())
+                            .collect::<Vec<String>>()
+                    )
+                })
+            })
+            .collect()
     }
 
     fn col_name_to_col_idx(&self, col_name: &str) -> Option<usize> {
@@ -68,29 +71,16 @@ impl CsvSchema {
         }
         None
     }
-
-    pub fn eval_indizes_unique_constraint(&self, constraint: &SchemaUniqueSpecifier) -> Vec<usize> {
-        let indizes = constraint
-            .columns
-            .iter()
-            .map(|c| {
-                self.col_name_to_col_idx(c)
-                    .expect("Unique Col Name does not exist")
-            })
-            .collect();
-
-        indizes
-    }
 }
 
 #[derive(Clone, Debug, Deserialize)] // serde: parse FROM a format (toml, json, etc.)
 #[derive(Serialize)] // serde: convert TO a format
-pub struct SchemaUniqueSpecifier {
+pub struct SchemaUniqueConstraint {
     pub columns: Vec<String>,
     pub name: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct CsvColumnSchema {
     pub name: String,
     #[serde(default)]
@@ -99,7 +89,7 @@ pub struct CsvColumnSchema {
     pub dtype: ColumnType,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 #[serde(tag = "dtype")]
 pub enum ColumnType {
     #[serde(rename = "string")]

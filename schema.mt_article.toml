@@ -8,14 +8,14 @@ required = true
 min_length = 1
 regex = "MT_.+"
 # custom_validator = "value == \"MT_DS_WorkTable\""
-custom_validator = """
-let x = value == "MT_DS_WorkTable";
+# custom_validator = """
+# let x = value == "MT_DS_WorkTable";
 
-print("Hello from rhai :)");
-print(value);
-print(row);
-x
-"""
+# print("Hello from rhai :)");
+# print(value);
+# print(row);
+# x
+# """
 
 [[columns]]
 name = "man"

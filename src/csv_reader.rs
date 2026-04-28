@@ -1,4 +1,4 @@
-use crate::errors::CsvSchemaError;
+use crate::{csv_row_validators::ColumnSelection, errors::CsvSchemaError, hashing};
 use std::{alloc::System, path::Path, str, time::SystemTime};
 
 use crate::csv_schema::{CsvSchema, CsvSchemaSettings};
@@ -21,6 +21,30 @@ pub struct ErrorRow {
 pub struct OkRow {
     pub line_no: u64,
     pub cells: Vec<String>,
+    pub index: usize,
+}
+
+impl OkRow {
+    pub fn hash(&self, column_selection: &ColumnSelection) -> u64 {
+        let row_len = self.cells.len();
+
+        let mut bitmask = vec![false; row_len];
+
+        for i in column_selection {
+            bitmask[*i] = true;
+        }
+
+        let hash_source: Vec<&str> = self
+            .cells
+            .iter()
+            .enumerate()
+            .filter(|(idx, _)| bitmask[*idx])
+            .map(|(_, cell)| cell.as_str())
+            .collect();
+
+        let hash = hashing::hash_vec(&hash_source);
+        hash
+    }
 }
 
 fn csv_record_to_vec(row: &csv::StringRecord) -> Vec<String> {
@@ -52,11 +76,19 @@ pub fn read_csv(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> 
     let mut ok_rows = Vec::new();
     let mut error_rows = Vec::new();
 
+    println!("read_csv................... {:?}", schema.columns);
+
     for record in reader.records() {
         match record {
             Ok(row) => {
                 let line_no = row.position().unwrap().line();
                 let row = csv_record_to_vec(&row);
+
+                println!(
+                    "read row row len. {:?} vs {:?}",
+                    row.len(),
+                    expected_col_len
+                );
 
                 if row.len() != expected_col_len {
                     let result = ErrorRow {
@@ -71,6 +103,7 @@ pub fn read_csv(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> 
                     let result = OkRow {
                         line_no,
                         cells: row,
+                        index: ok_rows.len(),
                     };
                     ok_rows.push(result);
                 }

@@ -21,3 +21,13 @@ macro_rules! input {
         input.trim().to_string()
     }};
 }
+
+pub fn create_bitmask(source_len: usize, ones: &Vec<usize>) -> Vec<bool> {
+    let mut bitmask = vec![false; source_len];
+
+    for i in ones {
+        bitmask[*i] = true;
+    }
+
+    bitmask
+}
