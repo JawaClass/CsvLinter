@@ -21,6 +21,14 @@ impl CachedCsvWorkspace {
         CachedCsvWorkspace { mapping }
     }
 
+    pub fn clear(&mut self) {
+        self.mapping.clear();
+    }
+
+    pub fn remove(&mut self, filename: &str) {
+        self.mapping.remove(filename);
+    }
+
     pub fn validate_csv(&mut self, filename: &str) {
         let mut csv = self.mapping.remove(filename).expect("...");
         csv.validate_rows(&self.mapping);
@@ -68,6 +76,16 @@ impl CachedCsvWorkspace {
                 .index_columns(&columns, ignore_duplicates)?;
         }
 
+        Ok(())
+    }
+    pub fn run_validation_steps(&mut self, csv_filename: &str) -> Result<(), CsvCachingError> {
+        let schema_filename = format!("schema.{}.toml", csv_filename.trim_end_matches(".csv"));
+        self.remove(csv_filename);
+        self.add_csv_file(csv_filename, &schema_filename);
+        self.csv(csv_filename).load()?;
+        self.prepare_fk_validation_for(csv_filename)?;
+        self.csv(csv_filename).prepare_validation()?;
+        self.validate_csv(csv_filename);
         Ok(())
     }
 

@@ -3,3 +3,542 @@
 
 
 MT_DS_WorkTable;kn;talos;TLTN08660A;MT_DS_WorkTable_TLTN08660A_Desk;CHP_DS_WorkTable
+
+##################################################
+#
+# WORK.PLACE
+#
+##################################################
+#
+#
+# Desk
+MT_WP_Desk;GType;;WorkPlace;0;
+MT_WP_Desk;GMode;;OCD;0;
+MT_WP_Desk;GAlign;;NNN;0;
+MT_WP_Desk;GWP_Series		;lb;WP_WorkPlace  		;2  ;
+MT_WP_Desk;GWP_Article		;ch;WP_WPAPTN	  		;131;
+MT_WP_Desk;GWP_Variant		;ch;WP_DeskStand		;131;
+# entfernt 12.07.2021
+#MT_WP_Desk;GWP_MessageMay1	;lb;WP_MessageMay1  	;2  ;
+#MT_WP_Desk;GWP_MessageMay2	;lb;WP_MessageMay2  	;2  ;
+# na props
+#MT_WP_Desk;GTischNORMAL__Masse			;lb;		;2;
+MT_WP_Desk;GB1__TI			;na;1600		;8329; 
+MT_WP_Desk;GT1__TI			;na;800			;8329;
+MT_WP_Desk;GGST__DESIGN		;na;XXXX		;8329;    
+MT_WP_Desk;GGST__COVER		;na;XXXX		;8329;
+MT_WP_Desk;GH__VERSTELL		;na;XXXX		;8329;
+MT_WP_Desk;GPLATTENSTAERKE	;na;XXXX		;8329;
+MT_WP_Desk;GKABELWANNE		;na;XXXX 		;8329;
+MT_WP_Desk;GAD__AUSSCHNITT	;na;XXXX		;8329;
+MT_WP_Desk;GPOS__ADAPTER	;na;XXXX		;8329;
+MT_WP_Desk;GROLLEN__B4		;na;XXXX		;8329;
+MT_WP_Desk;GRETURN			;na;XXXX		;8329;
+MT_WP_Desk;GGST__EINGER		;na;XXXX		;8329;
+MT_WP_Desk;GKT__GEO			;na;XXXX		;8329;
+MT_WP_Desk;GSCHIEBEPLATTE	;na;XXXX		;8329;
+MT_WP_Desk;GF90				;na;XXXX		;8329;
+MT_WP_Desk;GF234			;na;XXXX		;8329;
+MT_WP_Desk;GPL__UEBERSTAND__ST	;na;XXXX	;8329;
+MT_WP_Desk;GSEITENWANGE		;na;XXXX		;8329;
+MT_WP_Desk;GKABELFUEHRUNG	;na;XXXX		;8329;
+MT_WP_Desk;GH__AUSGLEICH	;na;XXXX		;8329;
+MT_WP_Desk;GVB__CONT		;na;XXXX		;8329;
+MT_WP_Desk;GFUSS__DESIGN	;na;XXXX		;8329;
+#
+#
+# für Messages
+MT_WP_Desk;GKABELKLAMMER		;na; 		;8329;
+MT_WP_Desk;GELEKTRO				;na; 		;8329;
+
+#Attachment 
+MT_WP_Desk;GWP_HygieneScreen  	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_Reling        	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AttachUpper   	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AttachBehind		;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AttachSideLeft   ;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AttachSideRight  ;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AttachUnder   	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_CpuHolder     	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_CpuSmart      	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_Drawer      		;ch;WP_None	;8329;
+#MT_WP_Desk;GWP_Zuutsibox	   	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_Printer      	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_CableManagement 	;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AddOnTablesL		;ch;WP_None	;8329;
+MT_WP_Desk;GWP_AddOnTablesR		;ch;WP_None	;8329;
+MT_WP_Desk;GWP_Return      		;ch;WP_None	;8329;
+MT_WP_Desk;GWP_Personalbox      ;ch;WP_None	;8329;
+# spacer
+MT_WP_Desk;GWP_DeskConnectorSpaceLinear      ;ch;WP_Space_0	;27;
+MT_WP_Desk;GWP_DeskConnectorSpaceBlock       ;ch;WP_Space_0	;27;
+MT_WP_Desk;GWP_DeskConnectorLinear           ;ch;WP_None	;27;
+MT_WP_Desk;GWP_DeskConnectorBlock             ;ch;WP_None	;27;
+#
+MT_WP_Desk;GWP_Update     		;fn;0	    ;2067;GWP_HygieneScreen,GWP_Reling,GWP_AttachUpper,GWP_AttachBehind,GWP_AttachUnder,GWP_Return,GWP_CpuHolder,GWP_Printer,GWP_CpuSmart,GWP_Personalbox,GWP_CableManagement,GWP_Drawer,GWP_Cutout_LiHi,GWP_Cutout_ReHi,GWP_AttachSideLeft,GWP_AttachSideRight,GWP_DeskConnectorLinear,GWP_DeskConnectorBlock,GWP_AddOnTablesL,GWP_AddOnTablesR
+MT_WP_Desk;GWP_AttachUpperAdaptionType      ;ch;KA0	;27; 
+# ausfr HI
+MT_WP_Desk;GX__1__FK			;na;		;16  ;
+#MT_WP_Desk;GPOS__AUSFRAESUNG__HI;na;VOID       ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG1__HI;na;      ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG2__HI;na;      ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG3__HI;na;      ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG1__ASF13;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG2__ASF13;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG3__ASF13;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG1__ASF14;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG2__ASF14;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG3__ASF14;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG1__ASF15;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG2__ASF15;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG3__ASF15;na;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG1__ASF2;na ;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG2__ASF2;na ;0     ;3;
+#MT_WP_Desk;GTYP__AUSFRAESUNG3__ASF2;na ;0     ;3;
+#
+#MT_WP_Desk;GWP_Cutout1;ch;WP_None      ;8331; 
+#MT_WP_Desk;GWP_Cutout2;ch;WP_None      ;8331;
+#MT_WP_Desk;GWP_Cutout3;ch;WP_None      ;8331;
+# ausfr HI rechts / links aussen
+MT_WP_Desk;GTYP__AUSFR__AULI__HI;na;VOID       ;3; 
+MT_WP_Desk;GTYP__AUSFR__AURE__HI;na;VOID       ;3; 
+MT_WP_Desk;GAUSFRAESUNG__AUSSEN__HI;na;VOID       ;3; 
+#
+MT_WP_Desk;GWP_Cutout_LiHi;ch;WP_None      ;8331; 
+MT_WP_Desk;GWP_Cutout_ReHi;ch;WP_None      ;8331;
+# ausfr HI rechts / links innen
+# MT_WP_Desk;GPOS__AUSFRAESUNG__HL;na;VOID       ;3;  
+# MT_WP_Desk;GPOS__AUSFRAESUNG__HR;na;VOID       ;3;   
+# MT_WP_Desk;GTYP__AUSFRAESUNG1__HL;na;VOID       ;3;  
+# MT_WP_Desk;GTYP__AUSFRAESUNG2__HL;na;VOID       ;3;  
+# MT_WP_Desk;GTYP__AUSFRAESUNG3__HL;na;VOID       ;3;  
+# MT_WP_Desk;GTYP__AUSFRAESUNG1__HR;na;VOID       ;3;  
+# MT_WP_Desk;GTYP__AUSFRAESUNG2__HR;na;VOID       ;3;  
+# MT_WP_Desk;GTYP__AUSFRAESUNG3__HR;na;VOID       ;3;  
+# #
+# MT_WP_Desk;GWP_CutoutL1;ch;WP_None      ;8331; 
+# MT_WP_Desk;GWP_CutoutL2;ch;WP_None      ;8331;
+# MT_WP_Desk;GWP_CutoutL3;ch;WP_None      ;8331;
+# #
+# MT_WP_Desk;GWP_CutoutR1;ch;WP_None      ;8331; 
+# MT_WP_Desk;GWP_CutoutR2;ch;WP_None      ;8331;
+# MT_WP_Desk;GWP_CutoutR3;ch;WP_None      ;8331;
+
+# Double Bench
+MT_WP_DoubleBench;GType;;WorkPlace;0;
+MT_WP_DoubleBench;GMode;;OCD;0;
+MT_WP_DoubleBench;GAlign;;NNN;0;
+MT_WP_DoubleBench;GWP_Series		;lb;WP_WorkPlace  	;2;
+MT_WP_DoubleBench;GWP_Article		;lb;WP_WPAPTDB  	;2;
+MT_WP_DoubleBench;GWP_Variant		;ch;WP_DoubleBench	;2;
+# entfernt 12.07.2021
+#MT_WP_DoubleBench;GWP_MessageMay2	;lb;WP_MessageMay2	;2;
+# na props
+MT_WP_DoubleBench;GB1__TI	     	;na;1600 ;3;
+MT_WP_DoubleBench;GT1__TI	     	;na;1600 ;3;
+MT_WP_DoubleBench;GPLATTENSTAERKE	;na;XXXX	;8329;
+MT_WP_DoubleBench;GAD__AUSSCHNITT	;na;XXXX	;3;
+MT_WP_DoubleBench;GPOS__ADAPTER	    ;na;XXXX	;3;
+MT_WP_DoubleBench;GROLLEN__B4		;na;XXXX		;3;
+MT_WP_DoubleBench;GH__VERSTELL		;na;XXXX		;8329;
+MT_WP_DoubleBench;GGST__DESIGN		;na;XXXX		;8329;
+MT_WP_DoubleBench;GGST__EINGER		;na;XXXX		;8329; 
+MT_WP_DoubleBench;GKT__GEO			;na;XXXX		;8329; 
+MT_WP_DoubleBench;GSCHIEBEPLATTE	;na;XXXX		;8329;
+MT_WP_DoubleBench;GPL__UEBERSTAND__ST	;na;XXXX	;8329;
+# für Message
+MT_WP_DoubleBench;GKABELWANNE		;na;XXXX  		;3;
+MT_WP_DoubleBench;GKABELWANNE__BENCH;na;XXXX  		;3;
+MT_WP_DoubleBench;GKABELKLAMMER		;na;XXXX 		;3;
+MT_WP_DoubleBench;GELEKTRO			;na;XXXX 		;3;
+# attachments
+MT_WP_DoubleBench;GWP_Reling       		;ch;WP_None ;8329;
+MT_WP_DoubleBench;GWP_MiddlePanel   	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_Panel_F       	;ch;WP_None ;8329;  
+MT_WP_DoubleBench;GWP_Panel_B       	;ch;WP_None ;8329;
+MT_WP_DoubleBench;GWP_AttachSideLeft   ;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_AttachSideRight  ;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_AttachUnder   	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_SideCover     	;ch;WP_None ;8329;
+MT_WP_DoubleBench;GWP_Printer       	;ch;WP_None ;8585;
+MT_WP_DoubleBench;GWP_CpuHolder     	;ch;WP_None ;8585;
+MT_WP_DoubleBench;GWP_CpuSmart      	;ch;WP_None ;8329;
+MT_WP_DoubleBench;GWP_Drawer      		;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_AddOnTablesBenchL	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_AddOnTablesBenchR	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_CableManagement1 	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_CableManagement2 	;ch;WP_None	;8329;
+MT_WP_DoubleBench;GWP_CableManagementCenter 	;ch;WP_None	;8329; 
+MT_WP_DoubleBench;GWP_Personalbox1     ;ch;WP_None	;8585;
+MT_WP_DoubleBench;GWP_Personalbox2     ;ch;WP_None	;8585;
+MT_WP_DoubleBench;GWP_Update     	;fn;0	    ;2067;GWP_Reling,GWP_MiddlePanel,GWP_Panel_F,GWP_Panel_B,GWP_Printer,GWP_CpuSmart,GWP_CpuHolder,GWP_SideCover,GWP_CableManagementCenter,GWP_CableManagement1,GWP_CableManagement2,GWP_Personalbox1,GWP_Personalbox2,GWP_Drawer,GWP_AttachUnder,GWP_Cutout_LiHi,GWP_Cutout_ReHi,GWP_AttachSideLeft,GWP_AttachSideRight,GWP_AddOnTablesBenchL,GWP_AddOnTablesBenchR
+#
+# ausfr HI rechts / links aussen
+MT_WP_DoubleBench;GTYP__AUSFR__AULI__HI;na;VOID       ;3; 
+MT_WP_DoubleBench;GTYP__AUSFR__AURE__HI;na;VOID       ;3; 
+MT_WP_DoubleBench;GAUSFRAESUNG__AUSSEN__HI;na;VOID       ;3; 
+MT_WP_DoubleBench;GF90	;na;XXXX		;8329;
+MT_WP_DoubleBench;GF234	;na;XXXX		;8329;
+#
+MT_WP_DoubleBench;GWP_Cutout_LiHi;ch;WP_None      ;8331; 
+MT_WP_DoubleBench;GWP_Cutout_ReHi;ch;WP_None      ;8331;
+#
+MT_WP_DoubleBench;GWP_AttachUpperAdaptionTypeFront      ;ch;KA0	;27; 
+MT_WP_DoubleBench;GWP_AttachUpperAdaptionTypeBack       ;ch;KA0	;27; 
+# 24
+#
+#
+# Meet
+MT_WP_Meet;GType;;WorkPlace;0;
+MT_WP_Meet;GMode;;OCD;0;
+MT_WP_Meet;GAlign;;NNN;0;
+MT_WP_Meet;GWP_Series		;lb;WP_WorkPlace  	;2  ;
+MT_WP_Meet;GWP_Article		;ch;WP_WPBTN	  	;131;GWP_Variant
+MT_WP_Meet;GWP_Variant		;ch;WP_MeetNorm		;131;
+MT_WP_Meet;GWP_InstType		;ch;WP_SingleEl		;131;GWP_Variant
+# entfernt 12.07.2021
+#MT_WP_Meet;GWP_MessageMay1	;lb;WP_MessageMay1  ;2  ;
+#MT_WP_Meet;GWP_MessageMay2	;lb;WP_MessageMay2  ;2  ;
+#MT_WP_Meet;GWP_MessageMay3	;lb;WP_MessageMay3  ;2  ;
+
+# 8329     
+MT_WP_Meet;GB1__TI		;na;1600		;10377 ;GWP_Cutout1,GWP_Cutout2,GWP_Cutout3
+MT_WP_Meet;GT1__TI		;na;1600		;10377 ;GWP_Cutout1,GWP_Cutout2,GWP_Cutout3
+MT_WP_Meet;GX__1__FK	;na;			;3;
+MT_WP_Meet;GH__VERSTELL		;na;XXXX		;8329;
+MT_WP_Meet;GPOS__AUSFRAESUNG;na;UNDEFINED       ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG1;na;      ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG2;na;      ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG3;na;      ;3;
+#
+MT_WP_Meet;GPOS__AUSFRAESUNG__HI ;na;UNDEFINED  ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__HI;na;      ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__HI;na;      ;3;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__HI;na;      ;3;
+#
+MT_WP_Meet;GTYP__AUSFRAESUNG1__ASF13;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__ASF13;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__ASF13;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__ASF14;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__ASF14;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__ASF14;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__ASF15;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__ASF15;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__ASF15;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__ASF2;na ;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__ASF2;na ;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__ASF2;na ;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__ASF21;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__ASF21;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__ASF21;na;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG1__TKL1;na ;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG2__TKL1;na ;0     ;1;
+MT_WP_Meet;GTYP__AUSFRAESUNG3__TKL1;na ;0     ;1;
+#
+MT_WP_Meet;GWP_Cutout1;ch;WP_None      ;8331; 
+MT_WP_Meet;GWP_Cutout2;ch;WP_None      ;8331;
+MT_WP_Meet;GWP_Cutout3;ch;WP_None      ;8331;
+#MT_WP_Meet;GWP_CableManagement 	;ch;WP_None	;8329;
+MT_WP_Meet;GF90		;na;XXXX		;8329;
+MT_WP_Meet;GF53		;na;XXXX		;8329;
+MT_WP_Meet;GF234	;na;XXXX		;8329;
+
+#
+# für Messages
+MT_WP_Meet;GPLATTENSTAERKE	;na;XXXX		;8329;
+MT_WP_Meet;GKABELWANNE			;na; 		;8329;
+MT_WP_Meet;GKABELKLAMMER		;na; 		;8329;
+MT_WP_Meet;GELEKTRO				;na; 		;8329;
+MT_WP_Meet;GPL__UEBERSTAND__ST	;na; 		;8329;
+
+MT_WP_Meet;GANSCHNITTKANTE__WP	;na;XXXX 		;8329;
+
+#
+# attachments
+MT_WP_Meet;GWP_AddMeet;ch;WP_None ;8329;
+#
+MT_WP_Meet;GWP_Update     		;fn;0	    ;16383;GWP_Cutout1,GWP_Cutout2,GWP_Cutout3,GWP_AddMeet
+
+
+# Consult
+MT_WP_Consult;GType;;WorkPlace;0;
+MT_WP_Consult;GMode;;OCD;0;
+MT_WP_Consult;GAlign;;NNN;0;
+MT_WP_Consult;GWP_Series		;lb;WP_WorkPlace  	;2  ;
+MT_WP_Consult;GWP_Article		;ch;WP_WPAPTBEF	  	;131;
+MT_WP_Consult;GWP_Variant		;ch;WP_ConsultFree	;131;
+# entfernt 12.07.2021
+#MT_WP_Consult;GWP_MessageMay1	;lb;WP_MessageMay1  ;2  ;
+#MT_WP_Consult;GWP_MessageMay2	;lb;WP_MessageMay2  ;2  ;
+#
+MT_WP_Consult;GB1__TI		;na;1600		;8329;
+MT_WP_Consult;GT1__TI		;na;1600		;8329; 
+MT_WP_Consult;GBESPR__SEITE;na;BES1		;8329;  
+#
+# für Message
+MT_WP_Consult;GPLATTENSTAERKE	;na;XXXX		;8329;
+MT_WP_Consult;GKABELWANNE			;na; 		;8329;
+MT_WP_Consult;GKABELKLAMMER			;na; 		;8329;
+MT_WP_Consult;GELEKTRO				;na; 		;8329;
+MT_WP_Consult;GGST__DESIGN		;na;XXXX		;8329;
+MT_WP_Consult;GH__VERSTELL		;na;XXXX		;8329;
+MT_WP_Consult;GGST__COVER		;na;XXXX		;8329;
+
+# ausfr HI rechts / links aussen
+MT_WP_Consult;GTYP__AUSFR__AULI__HI;na;VOID       ;3; 
+MT_WP_Consult;GTYP__AUSFR__AURE__HI;na;VOID       ;3; 
+MT_WP_Consult;GAUSFRAESUNG__AUSSEN__HI;na;VOID       ;3; 
+#
+MT_WP_Consult;GWP_Cutout_LiHi;ch;WP_None      ;8331; 
+MT_WP_Consult;GWP_Cutout_ReHi;ch;WP_None      ;8331;
+MT_WP_Consult;GF90	;na;XXXX		;8329;
+MT_WP_Consult;GF234	;na;XXXX		;8329;
+#
+MT_WP_Consult;GWP_Update     		;fn;0	    ;16383;GWP_Cutout_LiHi,GWP_Cutout_ReHi
+
+# Nesting
+MT_WP_Nesting;GType;;WorkPlace;0;
+MT_WP_Nesting;GMode;;OCD;0;
+MT_WP_Nesting;GAlign;;NNN;0;
+MT_WP_Nesting;GWP_Series		;lb;WP_WorkPlace  ;2;
+MT_WP_Nesting;GWP_Article		;lb;WP_WPKTS	  ;2;
+MT_WP_Nesting;GWP_Variant		;ch;WP_Nesting	  ;2;
+# entfernt 12.07.2021
+#MT_WP_Nesting;GWP_MessageMay1	;lb;WP_MessageMay1;2;
+#MT_WP_Nesting;GWP_MessageMay2	;lb;WP_MessageMay2;2;
+# na
+MT_WP_Nesting;GB1__TI		    ;na;0		;8329;
+MT_WP_Nesting;GT1__TI		    ;na;0		;8329;
+MT_WP_Nesting;GGST__DESIGN		;na;XXX		;8329; 
+MT_WP_Nesting;GX__1__FK		;na;			;3;
+MT_WP_Nesting;GROLLEN__B4   	;na;XXXX		;8329;
+MT_WP_Nesting;GH__VERSTELL		;na;XXXX		;8329;
+MT_WP_Nesting;GPLATTENSTAERKE	;na;XXXX		;8329;
+MT_WP_Nesting;GOBFL01__TI	;na;XXXX		;8329;
+#
+# für Message
+MT_WP_Nesting;GKABELWANNE		;na; 		;8329;
+MT_WP_Nesting;GKABELKLAMMER		;na; 		;8329;
+MT_WP_Nesting;GELEKTRO			;na; 		;8329;
+#
+MT_WP_Nesting;GWP_AttachUnder   	;ch;WP_None	;8329;
+MT_WP_Nesting;GWP_Update     		;fn;0	    ;2067;GWP_AttachUnder,GWP_Cutout1,GWP_Cutout2,GWP_Cutout3,GWP_CableManagement
+#
+MT_WP_Nesting;GPOS__AUSFRAESUNG__HI;na;POS0       ;3;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__HI;na;      ;3;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__HI;na;      ;3;
+MT_WP_Nesting;GTYP__AUSFRAESUNG3__HI;na;      ;3;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__ASF13;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__ASF13;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG3__ASF13;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__ASF14;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__ASF14;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG3__ASF14;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__ASF15;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__ASF15;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG3__ASF15;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__ASF2;na; 0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__ASF2;na; 0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG3__ASF2;na; 0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG1__ASF21;na;0     ;1;
+MT_WP_Nesting;GTYP__AUSFRAESUNG2__ASF21;na;0     ;1;
+#
+MT_WP_Nesting;GWP_Cutout1;ch;WP_None      ;8331; 
+MT_WP_Nesting;GWP_Cutout2;ch;WP_None      ;8331;
+MT_WP_Nesting;GWP_Cutout3;ch;WP_None      ;8331;
+MT_WP_Nesting;GF90	;na;XXXX		;8329;
+MT_WP_Nesting;GF234	;na;XXXX		;8329;
+MT_WP_Nesting;GWP_CableManagement 	;ch;WP_None	;8329;
+#
+# Anbautische und -elemente
+MT_WP_Extension;GType;;WorkPlace;0;
+MT_WP_Extension;GMode;;OCD;0;
+MT_WP_Extension;GAlign;;NNN;0;
+MT_WP_Extension;GWP_Series		;lb;WP_WorkPlace  		;2  ;
+MT_WP_Extension;GWP_Article		;ch;WP_WPABESN	  		;131;
+MT_WP_Extension;GWP_Variant		;ch;WP_ExtRect			;131;
+#
+#MT_WP_Extension;GWP_Update     		;fn;0	    ;2067;
+MT_WP_Extension;GTISCHTYP__WP	;na;XXXX		;8329;
+MT_WP_Extension;GANB			;na;XXXX		;8329;
+MT_WP_Extension;GANB__HV		;na;XXXX		;8329;
+MT_WP_Extension;GANB__TI__RETURN;na;XXXX 		;8329;
+MT_WP_Extension;GPLATTENSTAERKE ;na;XXXX 		;8329;
+MT_WP_Extension;GGST__DESIGN	;na;XXXX		;8329;
+MT_WP_Extension;GWP_Update     	;fn;0	    ;2067;
+
+# Return
+MT_WP_Return;GType;;WorkPlace;0;
+MT_WP_Return;GMode;;OCD;0;
+MT_WP_Return;GAlign;;NNN;0;
+MT_WP_Return;GWP_Series		;lb;WP_WorkPlace  ;2;
+MT_WP_Return;GWP_Article	;lb;WP_WPAPTRA	  ;2;
+MT_WP_Return;GWP_Variant	;ch;WP_Return	  ;2;
+# entfernt 12.07.2021
+#MT_WP_Return;GWP_MessageMay1	;lb;WP_MessageMay1  	;2  ;
+#MT_WP_Return;GWP_MessageMay2	;lb;WP_MessageMay2  	;2  ;
+MT_WP_Return;GWP_Update     		;fn;0	    ;2067;
+# 
+MT_WP_Return;GB1__TI		;na;1600		;8329;
+MT_WP_Return;GT1__TI		;na;1600		;8329; 
+MT_WP_Return;GANBAU__RETURN	;na;XXXX		;8329;
+MT_WP_Return;GH__VERSTELL	;na;XXXX		;8329;
+MT_WP_Return;GPLATTENSTAERKE;na;XXXX		;8329;
+MT_WP_Return;GAD__AUSSCHNITT	;na;XXXX		;8329;
+MT_WP_Return;GPOS__ADAPTER	;na;XXXX		;8329;
+MT_WP_Return;GROLLEN__B4	;na;XXXX		;8329;
+MT_WP_Return;GELEKTRO			;na; 		;8329;
+MT_WP_Return;GANB__TI__RETURN			;na; 		;8329;
+#
+# für Message
+MT_WP_Return;GKABELWANNE		;na; 		;8329;
+MT_WP_Return;GKABELKLAMMER		;na; 		;8329;
+#
+#
+# Monosäulentisch
+MT_WP_MonoDesk;GType;;WorkPlaceMonoDesk;0;
+MT_WP_MonoDesk;GMode;;OCD;0;
+MT_WP_MonoDesk;GAlign;;NNN;0;
+MT_WP_MonoDesk;GWP_Series	;lb;WP_WorkPlace  ;2;
+MT_WP_MonoDesk;GWP_Article	;lb;WP_WPTMS	  ;2;
+MT_WP_MonoDesk;GWP_Variant	;ch;WP_Mono		  ;2;
+#
+MT_WP_MonoDesk;GB1__TI		;na;800		;3;
+MT_WP_MonoDesk;GGST__DESIGN	;na;XXXX		;8329;
+MT_WP_MonoDesk;GH__VERSTELL	;na;XXXX		;8329;
+# attachments
+MT_WP_MonoDesk;GWP_AddOnPanel  ;ch;WP_None ;8329;
+MT_WP_MonoDesk;GWP_AddOnHook   ;ch;WP_None ;8329;
+MT_WP_MonoDesk;GWP_AddOnToolbox;ch;WP_None ;8329;
+MT_WP_MonoDesk;GWP_AddOnBeaker ;ch;WP_None ;8329;
+MT_WP_MonoDesk;GWP_AddOnCable  ;ch;WP_None ;8329;
+MT_WP_MonoDesk;GWP_AddOnSmart  ;ch;WP_None ;8329;
+# reset height translation and child positions
+MT_WP_MonoDesk;GWP_Update      ;fn;0	   ;3347 ;GWP_AddOnPanel,GWP_AddOnHook,GWP_AddOnToolbox,GWP_AddOnBeaker,GWP_AddOnSmart
+MT_WP_MonoDesk;GMESSAGE__ONE	;na;XXXX		;8329;
+
+#
+# Paneel für MonosäulentischGWP_AddOnPanel
+MT_WP_MonoScreen;GType;;WorkPlaceMonoScreen;0;
+MT_WP_MonoScreen;GMode;;OCD;0;
+MT_WP_MonoScreen;GAlign;;NNN;0;
+MT_WP_MonoScreen;GWP_Series		;lb;WP_WorkPlace  ;2;
+MT_WP_MonoScreen;GWP_Article	;lb;WP_WPESBPETMS ;2;
+MT_WP_MonoScreen;GWP_Type		;ch;WP_SumTin  	  ;16;
+#
+MT_WP_MonoScreen;GB1__TI		;na;800		;3;
+#MT_WP_MonoScreen;GH1__PN		;na;600		;2;
+MT_WP_MonoScreen;GGST__DESIGN	;na;XXXX		;8329;
+MT_WP_MonoScreen;GMESSAGE__ONE	;na;XXXX		;8329;
+#
+# Technikcontainer
+#
+MT_WP_TechnikContainer;GType;;WP_TechnikContainer;0;
+MT_WP_TechnikContainer;GMode;;OCD;0;
+MT_WP_TechnikContainer;GAlign;;NNN;0;
+MT_WP_TechnikContainer;GWP_Series            ;lb;WP_WorkPlace    ;2   ;
+MT_WP_TechnikContainer;GWP_ContainerType     ;ch;WP_CT_Single    ;0   ;
+MT_WP_TechnikContainer;GWP_MaterialKorpus    ;ch;WP_PriceA       ;129 ;
+MT_WP_TechnikContainer;GWP_MaterialFront     ;ch;WP_PriceA       ;2067;GWP_MaterialKorpus
+#MT_WP_TechnikContainer;GWP_MaterialTop       ;ch;WP_PriceA       ;129 ;
+MT_WP_TechnikContainer;GWP_Width             ;ch;WP_1400         ;0   ;GWP_ContainerType
+MT_WP_TechnikContainer;GWP_InsertsType       ;ch;WP_IT_333_PT_CPU;131 ;GWP_ContainerType
+MT_WP_TechnikContainer;GWP_Inserts           ;ch;WP_IS_L         ;131 ;GWP_ContainerType
+MT_WP_TechnikContainer;GVORRICHTUNG__UNTERBAU;na;XXXX		     ;8329; 
+#
+# Personal Box
+MT_WP_PeronalBox;GType;;WorkPlaceBox;0;
+MT_WP_PeronalBox;GMode;;OCD;0;
+MT_WP_PeronalBox;GAlign;;NNN;0;
+MT_WP_PeronalBox;GWP_Series		;lb;WP_WorkPlace  ;2;
+MT_WP_PeronalBox;GWP_Article	;lb;WP_WPTZPERSBOX;2;
+MT_WP_PeronalBox;GWP_Type		;ch;WP_SumTin  	  ;16;
+MT_WP_PeronalBox;GGESTELL		    ;na;XXX  	  ;3;
+MT_WP_PeronalBox;GE__BEST__KEYST	;na;XXX  	  ;3;
+MT_WP_PeronalBox;GBOX__BEF__AN		;na;XXX  	  ;3;
+MT_WP_PeronalBox;GGST__DESIGN		;na;XXX  	  ;3;
+MT_WP_PeronalBox;GWP_AlignFront 	;ch;WP_Left;1291; 
+ 
+
+#
+#
+# CPU-Holder
+MT_WP_CpuHolder;GType;;WorkPlace;0;
+MT_WP_CpuHolder;GMode;;OCD;0;
+MT_WP_CpuHolder;GAlign;;NNN;0;
+MT_WP_CpuHolder;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+#MT_WP_CpuHolder;GWP_Article		;ch;WP_WPTZCPULI  ;3  ;
+MT_WP_CpuHolder;GWP_Variant		;ch;WP_WP_CPULight;2;
+#MT_WP_CpuHolder;GWP_CpuCover	;ch;WP_None		  ;8329;
+MT_WP_CpuHolder;GWP_Align		;ch;WP_Outside;3; GWP_Variant 
+MT_WP_CpuHolder;GGST__DESIGN		;na;XXXX		;3;
+#
+#
+# WP-Einzelteile
+MT_WorkPlaceAcc;GType;;WorkPlaceAcc;0;
+MT_WorkPlaceAcc;GMode;;OCD;0;
+MT_WorkPlaceAcc;GAlign;;NNN;0;
+MT_WorkPlaceAcc;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+#MT_WorkPlaceAcc;GWP_Article		;ch;WP_WPTZDBSBL  ;2  ;
+MT_WorkPlaceAcc;GWP_Type		;ch;WP_SumTin  	  ;16;
+MT_WorkPlaceAcc;GGST__DESIGN		;na;XXXX		;8329;
+# Hallo Fabian GST__DESIGN muss überall sichtbar bleiben !!!!
+MT_WorkPlaceAcc;GT1__TI		;na;XXX  	  ;3;
+MT_WorkPlaceAcc;GB1__RW		;na;XXXX		;8329; 
+MT_WorkPlaceAcc;GBEF__AN		;na;XXXX		;3; 
+
+#
+#
+# Cable-Management
+MT_WP_CableManagement;GType;;WP_CableManagement;0;
+MT_WP_CableManagement;GMode;;OCD;0;
+MT_WP_CableManagement;GAlign;;NNN;0;
+MT_WP_CableManagement;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+MT_WP_CableManagement;GWP_Article		;ch;WP_WPTZDBSBL  ;2  ;
+MT_WP_CableManagement;GWP_CableMType    ;ch;WP_CableChain ;3  ;
+MT_WP_CableManagement;GWP_Connector		;ch;WP_Screwed 	;3  ;GWP_CableMType
+MT_WP_CableManagement;GWP_HeightType    ;ch;WP_Fix	    ;3  ;GWP_CableMType,GWP_Connector
+MT_WP_CableManagement;GGST__DESIGN		;na;XXXX		;8329;
+MT_WP_CableManagement;GWP_CableAddon 	;ch;WP_None	;8329;
+MT_WP_CableManagement;GWP_ParentDeskHeight 	;fn;725;17;
+MT_WP_CableManagement;GWP_ParentDeskKabelwanne 	;ch;KW0;1307;
+MT_WP_CableManagement;GWP_ParentVariant 	;ch;WP_DeskStand;1307;
+MT_WP_CableManagement;GWP_ParentDeskRollen 	;ch;RL0;1307;
+# 1307
+#
+#
+# Spacers
+MT_WP_Spacers;GType;;WP_Spacers;0;
+MT_WP_Spacers;GMode;;OCD;0;
+MT_WP_Spacers;GAlign;;NNN;0;
+MT_WP_Spacers;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+MT_WP_Spacers;GWP_Article		;ch;WP_WPABH  ;2  ;
+MT_WP_Spacers;GWP_Align		;ch;WP_Align_0 ;3  ;
+MT_WP_Spacers;GWP_DeskConnectorSpace      ;ch;WP_Space_0	;24;
+MT_WP_Spacers;GTYP__ABH		;na;VOID ;3  ; 
+
+#
+#
+# SideCover
+MT_WP_SideCover;GType;;WP_SideCover;0;
+MT_WP_SideCover;GMode;;OCD;0;
+MT_WP_SideCover;GAlign;;NNN;0;
+MT_WP_SideCover;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+#MT_WP_SideCover;GWP_Article		;ch;WP_WPTZDBSBL  ;2  ;
+MT_WP_SideCover;GWP_SideCover	;ch;WP_NotPerforated ;3  ;
+MT_WP_SideCover;GT1__TI		    ;na;0 ;3  ;
+MT_WP_SideCover;GGST__DESIGN	      ;na;XXXX		     ;3;
+MT_WP_SideCover;GWP_GST_DESIGN_FATHER ;ch;WP_Quadrat	 ;11;
+MT_WP_SideCover;GWP_SideCover_	;ch;WP_NotPerforated ;8203  ;
+
+#
+#
+# Printer-Holder
+MT_WP_Printer;GType;;WorkPlace;0;
+MT_WP_Printer;GMode;;OCD;0;
+MT_WP_Printer;GAlign;;NNN;0;
+MT_WP_Printer;GWP_Series		;lb;WP_WorkPlace  ;2  ;
+MT_WP_Printer;GWP_Article		;ch;WP_WPTZCPULI  ;2  ;
+MT_WP_Printer;GWP_Align		;ch;WP_Outside;3;  
+MT_WP_Printer;GGST__DESIGN		;na;XXXX		;3;
+#

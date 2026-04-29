@@ -18,6 +18,8 @@ mod errors;
 mod hashing;
 mod regex_serializer;
 mod rhai_custom_cell_validator;
+use crate::csv_cached::RowValidationResult;
+use crate::csv_row_validators::RowCellsValidationResult;
 // use crate::csv_cached::CachedCsvHasher;
 use crate::csv_workspace::CachedCsvWorkspace;
 use crate::regex_serializer::deserialize_regex_opt;
@@ -30,137 +32,103 @@ mod csv_schema;
 mod csv_workspace;
 mod util;
 
-// fn write_result(result: Vec<LineEvalResult>, errors_only: bool) {
+// fn write_result(result: &Vec<RowValidationResult>, errors_only: bool) {
+//     println!("###############################");
+//     println!("WRITE CSV ROW VALIDATION RESULTS");
+//     println!(" - {:?} x", result.len());
+//     println!("###############################");
+//     let mut skipped_ok_lines = 0;
+//     let mut print_idx = 0;
+//     let mut ok_lines = 0;
+
 //     for line in result {
-//         let is_error = matches!(
-//             line,
-//             LineEvalResult::Error { .. } | LineEvalResult::LineSkipped { .. }
-//         );
+//         let is_ok = line.unique_violations.is_empty()
+//             && matches!(line.row_result, RowCellsValidationResult::Ok { .. });
 
-//         if !errors_only || is_error {
-//             println!("{:?}", line);
-//             println!("- - - - ");
+//         if is_ok {
+//             ok_lines += 1;
 //         }
+//         if errors_only && is_ok {
+//             skipped_ok_lines += 1;
+//             continue;
+//         }
+
+//         print_idx += 1;
+//         println!("Row Validtion Result... {}", print_idx);
+//         println!("{:?}", line);
+//         println!("- - - - ");
 //     }
-// }
+//     println!("OK lines not printed: {:?}", skipped_ok_lines);
+//     println!(
+//         "lines ok {} / {} ({}% OK)",
+//         ok_lines,
+//         result.len(),
+//         (ok_lines / result.len()) * 100
+//     );
+fn write_result(result: &Vec<RowValidationResult>, errors_only: bool) {
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    println!("📋 CSV ROW VALIDATION RESULTS");
+    println!("   {} rows total", result.len());
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-// fn build_unique_bitmask(columns: &Vec<CsvColumnSchema>, unique_col_idx: &Vec<usize>) -> Vec<u8> {
-//     /*
-//     buils a bit mask vector same size as columns length with value 1 where the column is supposed to be unique and 0 otherwise
-//      */
-//     let bit_mask: Vec<u8> = columns
-//         .iter()
-//         .enumerate()
-//         .map(|(idx, _)| {
-//             if unique_col_idx.iter().any(|x| *x == idx) {
-//                 1
-//             } else {
-//                 0
-//             }
-//         })
-//         .collect();
+    let mut skipped_ok_lines = 0;
+    let mut print_idx = 0;
+    let mut ok_lines = 0;
 
-//     bit_mask
-// }
+    for line in result {
+        let is_ok = line.unique_violations.is_empty()
+            && matches!(line.row_result, RowCellsValidationResult::Ok { .. });
+        if is_ok {
+            ok_lines += 1;
+        }
+        if errors_only && is_ok {
+            skipped_ok_lines += 1;
+            continue;
+        }
+        print_idx += 1;
+        println!("─────────────────────────────── Row {}", print_idx);
+        println!("{:?}", line);
+    }
 
-// fn build_unique_col_idx(
-//     constraint: &SchemaUniqueSpecifier,
-//     col_name_2_col_idx: &HashMap<String, usize>,
-// ) -> Vec<usize> {
-//     /*
-//     maps the column names to their index
-//      */
-//     let unique_col_idx: Vec<usize> = constraint
-//         .columns
-//         .iter()
-//         .map(|col_name| {
-//             *col_name_2_col_idx.get(col_name).expect(&format!(
-//                 "given unique column name not found in schema: {}",
-//                 col_name
-//             ))
-//         })
-//         .collect();
-
-//     unique_col_idx
-// }
-
-// fn build_unique_constraint(
-//     schema: &CsvSchema,
-//     constraint: &SchemaUniqueSpecifier,
-// ) -> UniqueConstraint {
-//     let col_name_2_col_idx: HashMap<String, usize> = schema
-//         .columns
-//         .iter()
-//         .enumerate() // gives (idx, &column)
-//         .map(|(idx, column)| (column.name.clone(), idx))
-//         .collect();
-
-//     let unique_col_idx = build_unique_col_idx(constraint, &col_name_2_col_idx);
-//     let bit_mask = build_unique_bitmask(&schema.columns, &unique_col_idx);
-
-//     // returns constraint paired with bit_mask
-//     UniqueConstraint {
-//         constraint: constraint.clone(),
-//         bit_mask,
-//     }
-// }
-
-// fn build_fk_hashmap(rows: Vec<Vec<&str>>, hash_indizes: Vec<usize>) -> HashMap<u64, usize> {
-//     /*
-//     iterates over all rows, builds a hash based on hash_indizes and returns the hashmap mapping fk hash to row
-//      */
-//     let mut map: HashMap<u64, usize> = HashMap::new();
-
-//     if rows.is_empty() {
-//         return map;
-//     }
-
-//     let highest_idx = *hash_indizes.iter().max().expect("Expected non empty vec");
-
-//     assert!(highest_idx < rows.len());
-
-//     // todo get from ok row method
-//     // let row_len = rows[0].len();
-
-//     // let mut bitmask = vec![false; row_len];
-
-//     // for i in hash_indizes {
-//     //     bitmask[i] = true;
-//     // }
-
-//     // for (idx, row) in rows.iter().enumerate() {
-//     //     // overwrite duplicate hashes. we only need to know if they exist
-//     //     let hash_source: Vec<&str> = row
-//     //         .iter()
-//     //         .enumerate()
-//     //         .filter(|(idx, _)| bitmask[*idx])
-//     //         .map(|(_, b)| *b)
-//     //         .collect();
-
-//     //     let hash = hashing::hash_vec(&hash_source);
-//         map.insert(hash, idx);
-//     }
-
-//     map
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    if skipped_ok_lines > 0 {
+        println!("🙈 {} OK rows hidden (errors_only mode)", skipped_ok_lines);
+    }
+    let pct = if result.len() > 0 {
+        (ok_lines * 100) / result.len()
+    } else {
+        0
+    };
+    let icon = if pct == 100 {
+        "🎉"
+    } else if pct >= 80 {
+        "✅"
+    } else {
+        "❌"
+    };
+    println!("{} {}/{} rows OK ({}%)", icon, ok_lines, result.len(), pct);
+}
 // }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut workspace = CachedCsvWorkspace::new();
 
-    workspace.add_csv_file("mt_article.csv", "schema.mt_article.toml");
-    workspace.csv("mt_article.csv").load()?;
-    workspace.prepare_fk_validation_for("mt_article.csv")?;
+    let mt_article = "mt_article.csv";
 
-    workspace.csv("mt_article.csv").prepare_validation()?;
+    let mt_type = "mt_type.csv";
 
-    workspace.validate_csv("mt_article.csv");
+    workspace.run_validation_steps(mt_article)?;
+    let validated = &workspace.csv(mt_article).get_validated_rows()?;
+    write_result(validated, true);
 
-    let validated = &workspace.csv("mt_article.csv").get_validated_rows()?;
 
-    println!("validated rows:{:?}", validated.len());
-    println!("{:#?}", validated);
+    workspace.run_validation_steps(mt_type)?;
+
+    let validated = &workspace.csv(mt_type).get_validated_rows()?;
+    write_result(validated, true);
+
+
 
     println!("Program finished.");
-
     Ok(())
 }

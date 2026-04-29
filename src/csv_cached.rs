@@ -43,6 +43,12 @@ use crate::{
     csv_workspace::{CachedCsvWorkspace, CsvMapping},
 };
 
+#[derive(Debug, Clone)]
+pub struct RowValidationResult<'a> {
+    pub row_result: &'a RowCellsValidationResult,
+    pub unique_violations: &'a [UniqueViolation],
+}
+
 pub struct CachedCsv {
     // filename of csv to read or reread from
     pub filename: String,
@@ -81,38 +87,43 @@ impl CachedCsv {
         }
     }
 
-    pub fn get_validated_rows(
-        &self,
-    ) -> Result<Vec<(&RowCellsValidationResult, Option<&Vec<UniqueViolation>>)>, CsvCachingError>
-    {
+    pub fn get_validated_rows(&self) -> Result<Vec<RowValidationResult>, CsvCachingError> {
         let csv = self.content()?;
 
         let rows = &csv.ok_rows;
 
-        let validated_rows: Vec<(&RowCellsValidationResult, Option<&Vec<UniqueViolation>>)> = rows
+        let validated_rows: Vec<RowValidationResult> = rows
             .iter()
             .enumerate()
-            .map(|(row_idx, row)| self.get_validated_row(row_idx))
+            .map(|(row_idx, _)| self.get_validated_row(row_idx))
             // .collect();
             .collect::<Result<Vec<_>, _>>()?;
 
         Ok(validated_rows)
     }
 
-    pub fn get_validated_row(
-        &self,
-        idx: usize,
-    ) -> Result<(&RowCellsValidationResult, Option<&Vec<UniqueViolation>>), CsvCachingError> {
+    pub fn get_validated_row(&self, idx: usize) -> Result<RowValidationResult, CsvCachingError> {
         /*
         collects all internal validation results for this row index ans returns it combined
          */
-        let row_result = &self
+
+        // result of pre calculated row cells validation
+        let row_result = self
             .validated_rows
             .get(&idx)
             .ok_or(CsvCachingError::CsvRowIndexError { index: idx })?;
-        let unique_result = self.validated_unique_constraints.get(&idx);
 
-        Ok((row_result, unique_result))
+        // result of pre calculated unique constraint validation
+        let unique_result: &[UniqueViolation] = self
+            .validated_unique_constraints
+            .get(&idx)
+            .map_or(&[], |v| v.as_slice());
+        // .unwrap_or(&Vec::new()).as_slice();
+
+        Ok(RowValidationResult {
+            row_result: row_result,
+            unique_violations: unique_result,
+        })
     }
 
     pub fn content(&self) -> Result<&CsvReadResult, CsvCachingError> {

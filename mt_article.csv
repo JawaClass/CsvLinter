@@ -1,6 +1,240 @@
 
-MT_DS_WorkTable;kn;talos;TLTN08660A;MT_DS_WorkTable_TLTN08660A_Desk;CHP_DS_WorkTable
+#MT_DS_WorkTable;kn;talos;TLTN08660A;MT_DS_WorkTable_TLTN08660A_Desk;CHP_DS_WorkTable
 
 #MT_DS_WorkTable;kn;talos;TLTN08660A;MT_DS_WorkTable_TLTN08660A_Desk;CHP_DS_WorkTable
 
 #MTa_DS_WorkTable;kn;talos;TLTN08660A;MT_DS_WorkTable_TLTN08660A_Desk;CHP_DS_WorkTable
+##################################################
+#
+# WORK.PLACE
+#
+##################################################
+#
+#
+# Schreibtisch, Normalform
+MT_WP_Desk;kn;workplace;WPAPTN			;MT_WP_Desk_WPAPTN ;CHP_WP_Desk
+# Schreibtisch, Freiform
+MT_WP_Desk;kn;workplace;WPAPTFR			;MT_WP_Desk_WPAPTFR;CHP_WP_Desk
+# Doppelbench
+MT_WP_DoubleBench;kn;workplace;WPAPTDB	;MT_WP_DoubleBench_WPAPTDB;CHP_WP_DoubleBench
+#
+# Besprechungstisch, Normalform
+MT_WP_Meet;kn;workplace;WPBTN			;MT_WP_Meet_WPBTN  ;CHP_WP_Meet
+# Besprechungstisch, Bootsform
+MT_WP_Meet;kn;workplace;WPBTB 			;MT_WP_Meet_WPBTB  ;CHP_WP_Meet
+# Besprechungstisch, Ovalform
+MT_WP_Meet;kn;workplace;WPBTO			;MT_WP_Meet_WPBTO  ;CHP_WP_Meet
+#
+# neue Besprechungstische
+MT_WP_Meet;kn;workplace;WPBT4N		;MT_WP_Meet_WPBT4N   ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT4B		;MT_WP_Meet_WPBT4B	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTANFN	;MT_WP_Meet_WPBTANFN ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTZWIN	;MT_WP_Meet_WPBTZWIN ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTENDN	;MT_WP_Meet_WPBTENDN ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT4ANFN	;MT_WP_Meet_WPBT4ANFN;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT2ZWIN	;MT_WP_Meet_WPBT2ZWIN;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT2ENDN	;MT_WP_Meet_WPBT2ENDN;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTANFT	;MT_WP_Meet_WPBTANFT ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTENDT	;MT_WP_Meet_WPBTENDT ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTANFB	;MT_WP_Meet_WPBTANFB ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTENDB	;MT_WP_Meet_WPBTENDB ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT4ANFB	;MT_WP_Meet_WPBT4ANFB;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBT2ENDB	;MT_WP_Meet_WPBT2ENDB;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPVTR		;MT_WP_Meet_WPVTR	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPVTHA		;MT_WP_Meet_WPVTHA	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPVTT		;MT_WP_Meet_WPVTT	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTT		;MT_WP_Meet_WPBTT	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTHB		;MT_WP_Meet_WPBTHB	 ;CHP_WP_Meet
+MT_WP_Meet;kn;workplace;WPBTS		;MT_WP_Meet_WPBTS	 ;CHP_WP_Meet
+#
+# Beratertisch, Freiform
+MT_WP_Consult;kn;workplace;WPAPTBEF		;MT_WP_Consult_WPAPTBEF;CHP_WP_Consult
+# Beratertisch, Eckform
+MT_WP_Consult;kn;workplace;WPAPTBEE		;MT_WP_Consult_WPAPTBEE;CHP_WP_Consult
+# Staffeltisch
+MT_WP_Nesting;kn;workplace;WPKTS		;MT_WP_Nesting_WPKTS  ;CHP_WP_Nesting
+# Anbau-/Returntisch
+MT_WP_Return;kn;workplace;WPAPTRA		;MT_WP_Return_WPAPTRA; 
+#
+# Anbautische und -elemente
+MT_WP_Extension;kn;workplace;WPABESN	;MT_WP_Extension_WPABESN   ;
+MT_WP_Extension;kn;workplace;WPABESABOG ;MT_WP_Extension_WPABESABOG;
+MT_WP_Extension;kn;workplace;WPABREGS	;MT_WP_Extension_WPABREGS  ;
+MT_WP_Extension;kn;workplace;WPATS135RD ;MT_WP_Extension_WPATS135RD;
+MT_WP_Extension;kn;workplace;WPATSRDBOG ;MT_WP_Extension_WPATSRDBOG;
+MT_WP_Extension;kn;workplace;WPATSANSRD ;MT_WP_Extension_WPATSANSRD;
+MT_WP_Extension;kn;workplace;WPATS34RD  ;MT_WP_Extension_WPATS34RD ;
+MT_WP_Extension;kn;workplace;WPATSDABOG ;MT_WP_Extension_WPATSDABOG;
+#
+# Monosäulentisch
+MT_WP_MonoDesk  ;kn;workplace;WPTMS		;MT_WP_MonoDesk_WPTMS;CHP_WP_MonoDesk
+MT_WP_MonoScreen;kn;workplace;WPESBPETMS;MT_WP_MonoScreen_WPESBPETMS;
+#
+# Technikcontainer
+#
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461LA;MT_WP_TechnikContainer_WPCTX091461LA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461LB2;MT_WP_TechnikContainer_WPCTX091461LB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461LC;MT_WP_TechnikContainer_WPCTX091461LC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461LC2;MT_WP_TechnikContainer_WPCTX091461LC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461LJ1;MT_WP_TechnikContainer_WPCTX091461LJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461RA;MT_WP_TechnikContainer_WPCTX091461RA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461RB2;MT_WP_TechnikContainer_WPCTX091461RB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461RC;MT_WP_TechnikContainer_WPCTX091461RC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461RC2;MT_WP_TechnikContainer_WPCTX091461RC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091461RJ1;MT_WP_TechnikContainer_WPCTX091461RJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462LA;MT_WP_TechnikContainer_WPCTX091462LA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462LB2;MT_WP_TechnikContainer_WPCTX091462LB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462LC;MT_WP_TechnikContainer_WPCTX091462LC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462LC2;MT_WP_TechnikContainer_WPCTX091462LC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462LJ1;MT_WP_TechnikContainer_WPCTX091462LJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462RA;MT_WP_TechnikContainer_WPCTX091462RA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462RB2;MT_WP_TechnikContainer_WPCTX091462RB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462RC;MT_WP_TechnikContainer_WPCTX091462RC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462RC2;MT_WP_TechnikContainer_WPCTX091462RC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091462RJ1;MT_WP_TechnikContainer_WPCTX091462RJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861LA;MT_WP_TechnikContainer_WPCTX091861LA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861LB2;MT_WP_TechnikContainer_WPCTX091861LB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861LC;MT_WP_TechnikContainer_WPCTX091861LC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861LC2;MT_WP_TechnikContainer_WPCTX091861LC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861LJ1;MT_WP_TechnikContainer_WPCTX091861LJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861RA;MT_WP_TechnikContainer_WPCTX091861RA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861RB2;MT_WP_TechnikContainer_WPCTX091861RB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861RC;MT_WP_TechnikContainer_WPCTX091861RC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861RC2;MT_WP_TechnikContainer_WPCTX091861RC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091861RJ1;MT_WP_TechnikContainer_WPCTX091861RJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862LA;MT_WP_TechnikContainer_WPCTX091862LA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862LB2;MT_WP_TechnikContainer_WPCTX091862LB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862LC;MT_WP_TechnikContainer_WPCTX091862LC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862LC2;MT_WP_TechnikContainer_WPCTX091862LC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862LJ1;MT_WP_TechnikContainer_WPCTX091862LJ1;
+
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862RA;MT_WP_TechnikContainer_WPCTX091862RA;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862RB2;MT_WP_TechnikContainer_WPCTX091862RB2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862RC;MT_WP_TechnikContainer_WPCTX091862RC;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862RC2;MT_WP_TechnikContainer_WPCTX091862RC2;
+MT_WP_TechnikContainer;kn;workplace;WPCTX091862RJ1;MT_WP_TechnikContainer_WPCTX091862RJ1;
+
+#
+# Personal Box
+MT_WP_PeronalBox;kn;workplace;WPTZPERSBOX	;MT_WP_PeronalBox_WPTZPERSBOX;CHP_WP_PeronalBox
+
+
+#
+# CPU-Holder
+MT_WP_CpuHolder;kn;workplace;WPTZCPULI		;MT_WP_CpuHolder_WPTZCPULI_Inside  ; 
+MT_WP_CpuHolder;kn;workplace;WPTZCPULI		;MT_WP_CpuHolder_WPTZCPULI_Outside  ; 
+ 
+ 
+#
+#
+# WP-EInzelteile
+MT_WorkPlaceAcc;kn;workplace;WPTZEARE		;MT_WorkPlaceAcc_WPTZEARE	 ;
+MT_WorkPlaceAcc;kn;workplace;WPHUELFBHM2	;MT_WorkPlaceAcc_WPHUELFBHM2 ;
+MT_WorkPlaceAcc;kn;workplace;WPHUELFBHM8	;MT_WorkPlaceAcc_WPHUELFBHM8 ;
+MT_WorkPlaceAcc;kn;workplace;WPKOLLSENSOR	;MT_WorkPlaceAcc_WPKOLLSENSOR;
+MT_WorkPlaceAcc;kn;workplace;WPSMARTCON		;MT_WorkPlaceAcc_WPSMARTCON	 ;
+MT_WorkPlaceAcc;kn;workplace;WPKWT			;MT_WorkPlaceAcc_WPKWT		 ;
+MT_WorkPlaceAcc;kn;workplace;WPMKWDB		;MT_WorkPlaceAcc_WPMKWDB	 ;
+MT_WorkPlaceAcc;kn;workplace;WPTZZKW		;MT_WorkPlaceAcc_WPTZZKW	 ;
+MT_WorkPlaceAcc;kn;workplace;WPTZKBLKK		;MT_WorkPlaceAcc_WPTZKBLKK	 ;
+MT_WorkPlaceAcc;kn;workplace;WPTZRWBLD		;MT_WorkPlaceAcc_WPTZRWBLD	 ;
+MT_WorkPlaceAcc;kn;workplace;WPTZRWBLDS		;MT_WorkPlaceAcc_WPTZRWBLDS	 ;  
+MT_WorkPlaceAcc;kn;workplace;WPTZTSHAKEN	;MT_WorkPlaceAcc_WPTZTSHAKEN ;
+MT_WorkPlaceAcc;kn;workplace;WPKWTKLEM		;MT_WorkPlaceAcc_WPKWTKLEM	 ;
+# After Sales-Anbautische
+MT_WorkPlaceAcc;kn;workplace;WPPABESN		;MT_WorkPlaceAcc_WPPABESN ;
+MT_WorkPlaceAcc;kn;workplace;WPPABESABOG	;MT_WorkPlaceAcc_WPPABESABOG ;
+MT_WorkPlaceAcc;kn;workplace;WPPABREGS		;MT_WorkPlaceAcc_WPPABREGS ;
+MT_WorkPlaceAcc;kn;workplace;WPBABREGS		;MT_WorkPlaceAcc_WPBABREGS ;
+MT_WorkPlaceAcc;kn;workplace;WPPATS135RD	;MT_WorkPlaceAcc_WPPATS135RD ;
+MT_WorkPlaceAcc;kn;workplace;WPPATSRDBOG	;MT_WorkPlaceAcc_WPPATSRDBOG ;
+MT_WorkPlaceAcc;kn;workplace;WPPATSANSRD	;MT_WorkPlaceAcc_WPPATSANSRD ;
+MT_WorkPlaceAcc;kn;workplace;WPPATS34RD		;MT_WorkPlaceAcc_WPPATS34RD ;
+MT_WorkPlaceAcc;kn;workplace;WPPATSDABOG	;MT_WorkPlaceAcc_WPPATSDABOG ;
+MT_WorkPlaceAcc;kn;workplace;WPARHMATS		;MT_WorkPlaceAcc_WPARHMATS ;
+MT_WorkPlaceAcc;kn;workplace;WPSTFATS		;MT_WorkPlaceAcc_WPSTFATS ;
+#
+# Umrüstset für Motorverstellung
+MT_WorkPlaceAcc;kn;workplace;WPGSTMOTSET	;MT_WorkPlaceAcc_WPGSTMOTSET ;
+#
+# Flachbildschirmhalter
+MT_WorkPlaceAcc;kn;workplace;WPFBH		;MT_WorkPlaceAcc_WPFBH    ;
+#
+MT_WorkPlaceAcc;kn;workplace;WPLINVERBTDB	;MT_WorkPlaceAcc_WPLINVERBTDB ;
+##################################################
+#
+# ZUBEHÖR (ex ZU)
+#
+##################################################
+#
+#
+MT_WorkPlaceAcc;kn;workplace;WPTZHKK	;MT_WorkPlaceAcc_WPTZHKK   ;
+# CPU Rollwagen
+MT_WorkPlaceAcc;kn;workplace;WPTZCPURLW	;MT_WorkPlaceAcc_WPTZCPURLW;
+# Unterbauschublade
+MT_WorkPlaceAcc;kn;workplace;WPTZUBS	;MT_WorkPlaceAcc_WPTZUBS   ;
+# Toolbox
+MT_WorkPlaceAcc;kn;workplace;WPTZTBOX	;MT_WorkPlaceAcc_WPTZTBOX  ;
+# Becher für Toolbox
+MT_WorkPlaceAcc;kn;workplace;WPTZTBOXBE	;MT_WorkPlaceAcc_WPTZTBOXBE;
+# Kabelklammer
+MT_WorkPlaceAcc;kn;workplace;WPTZKAKLA	;MT_WorkPlaceAcc_WPTZKAKLA ;
+# Kupplungskabel
+MT_WorkPlaceAcc;kn;workplace;WPZEKK		;MT_WorkPlaceAcc_WPZEKK    ;
+# Stromzuführungskabel
+MT_WorkPlaceAcc;kn;workplace;WPZESZ		;MT_WorkPlaceAcc_WPZESZ    ;
+# Steckdose
+MT_WorkPlaceAcc;kn;workplace;WPZESD		;MT_WorkPlaceAcc_WPZESD    ;
+MT_WorkPlaceAcc;kn;workplace;WPZESDMOD  ;MT_WorkPlaceAcc_WPZESDMOD ;
+# E-Set
+MT_WorkPlaceAcc;kn;workplace;WPZESDK53Z	;MT_WorkPlaceAcc_WPZESDK53Z;
+# Verteiler
+MT_WorkPlaceAcc;kn;workplace;WPZEVT		;MT_WorkPlaceAcc_WPZEVT    ;
+# Smart CPU-Halter
+MT_WorkPlaceAcc;kn;workplace;WPTZSMPC	;MT_WorkPlaceAcc_WPTZSMPC  ;
+#
+#
+# CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKFKW	;MT_WP_CableManagement_WPTZKKFKW;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKMKW	;MT_WP_CableManagement_WPTZKKMKW;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKFPL	;MT_WP_CableManagement_WPTZKKFPL;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKMPL	;MT_WP_CableManagement_WPTZKKMPL;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKMK  ;MT_WP_CableManagement_WPTZKKMK;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKKMK  ;MT_WP_CableManagement_WPTZKKMK_Fix;CHP_WP_CableManagement
+#
+MT_WP_CableManagement;kn;workplace;WPTZKSSF   ;MT_WP_CableManagement_WPTZKSSF;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKSSM   ;MT_WP_CableManagement_WPTZKSSM;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKSSFPL ;MT_WP_CableManagement_WPTZKSSFPL;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKSSMPL ;MT_WP_CableManagement_WPTZKSSMPL;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKSSKQ  ;MT_WP_CableManagement_WPTZKSSKQ;CHP_WP_CableManagement
+MT_WP_CableManagement;kn;workplace;WPTZKSSKQ  ;MT_WP_CableManagement_WPTZKSSKQ_Fix;CHP_WP_CableManagement
+#
+MT_WP_CableManagement;kn;workplace;WPTZKKDBZW	;MT_WP_CableManagement_WPTZKKDBZW;CHP_WP_CableManagement
+
+
+#
+#
+# Spacers - Abstandhalter
+MT_WP_Spacers;kn;workplace;WPABH   ;MT_WP_Spacers_WPABH_0;CHP_WP_Spacers
+MT_WP_Spacers;kn;workplace;WPABH   ;MT_WP_Spacers_WPABH_180;CHP_WP_Spacers
+
+#
+#
+# SideCover
+MT_WP_SideCover;kn;workplace;WPTZDBSBL		;MT_WP_SideCover_WPTZDBSBL	 ;CHP_WP_SideCover
+MT_WP_SideCover;kn;workplace;WPTZDBGSBL	    ;MT_WP_SideCover_WPTZDBGSBL	 ;CHP_WP_SideCover
+MT_WP_SideCover;kn;workplace;WPTZDBSW	    ;MT_WP_SideCover_WPTZDBSW	 ;CHP_WP_SideCover
+
+#
+#
+# Printer
+MT_WP_Printer;kn;workplace;WPTZSDAP		;MT_WP_Printer_WPTZSDAP_Inside	 ;
+MT_WP_Printer;kn;workplace;WPTZSDAP		;MT_WP_Printer_WPTZSDAP_Outside	 ;
+
+  

@@ -155,7 +155,7 @@ impl CsvValidator {
         csv_mapping: &CsvMapping,
         schema: &CsvSchema,
     ) -> Vec<ForeignKeyViolation> {
-        println!("validate fk constraints...");
+        // println!("validate fk constraints...");
 
         let mut violations: Vec<ForeignKeyViolation> = Vec::new();
 
