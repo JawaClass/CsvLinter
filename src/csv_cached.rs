@@ -323,7 +323,7 @@ impl CachedCsv {
                 // panic!("INDEX DUPLICATE AT INDEX_COLUMNS DETECTED {:?}", hash);
             }
 
-            println!(" - insert hash for row. {:?} ;; {:?}", row, columns);
+            // println!(" - insert hash for row. {:?} ;; {:?}", row, columns);
             slice.insert(hash, row_idx);
         }
 

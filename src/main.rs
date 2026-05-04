@@ -31,40 +31,8 @@ mod csv_row_validators;
 mod csv_schema;
 mod csv_workspace;
 mod util;
+mod csv_schema_overrides;
 
-// fn write_result(result: &Vec<RowValidationResult>, errors_only: bool) {
-//     println!("###############################");
-//     println!("WRITE CSV ROW VALIDATION RESULTS");
-//     println!(" - {:?} x", result.len());
-//     println!("###############################");
-//     let mut skipped_ok_lines = 0;
-//     let mut print_idx = 0;
-//     let mut ok_lines = 0;
-
-//     for line in result {
-//         let is_ok = line.unique_violations.is_empty()
-//             && matches!(line.row_result, RowCellsValidationResult::Ok { .. });
-
-//         if is_ok {
-//             ok_lines += 1;
-//         }
-//         if errors_only && is_ok {
-//             skipped_ok_lines += 1;
-//             continue;
-//         }
-
-//         print_idx += 1;
-//         println!("Row Validtion Result... {}", print_idx);
-//         println!("{:?}", line);
-//         println!("- - - - ");
-//     }
-//     println!("OK lines not printed: {:?}", skipped_ok_lines);
-//     println!(
-//         "lines ok {} / {} ({}% OK)",
-//         ok_lines,
-//         result.len(),
-//         (ok_lines / result.len()) * 100
-//     );
 fn write_result(result: &Vec<RowValidationResult>, errors_only: bool) {
     println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
     println!("📋 CSV ROW VALIDATION RESULTS");
@@ -118,16 +86,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mt_type = "mt_type.csv";
 
     workspace.run_validation_steps(mt_article)?;
-    let validated = &workspace.csv(mt_article).get_validated_rows()?;
-    write_result(validated, true);
-
+    // let validated = &workspace.csv(mt_article).get_validated_rows().unwrap();
+    // write_result(validated, true);
 
     workspace.run_validation_steps(mt_type)?;
 
-    let validated = &workspace.csv(mt_type).get_validated_rows()?;
-    write_result(validated, true);
-
-
+    // let validated = &workspace.csv(mt_type).get_validated_rows().unwrap();
+    // write_result(validated, true);
 
     println!("Program finished.");
     Ok(())

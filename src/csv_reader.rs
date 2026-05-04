@@ -1,5 +1,8 @@
-use crate::{csv_row_validators::ColumnSelection, errors::CsvSchemaError, hashing};
-use std::{alloc::System, path::Path, str, time::SystemTime};
+use crate::{
+    csv_row_validators::ColumnSelection, csv_schema::CsvColumnSchema, errors::CsvSchemaError,
+    hashing,
+};
+use std::{alloc::System, collections::HashMap, path::Path, str, time::SystemTime};
 
 use crate::csv_schema::{CsvSchema, CsvSchemaSettings};
 
@@ -45,6 +48,15 @@ impl OkRow {
         let hash = hashing::hash_vec(&hash_source);
         hash
     }
+
+    pub fn as_hashmap(&self, schema: &Vec<CsvColumnSchema>) -> HashMap<String, String> {
+        assert!(self.cells.len() == schema.len());
+        self.cells
+            .iter()
+            .enumerate()
+            .map(|(idx, cell)| (schema[idx].name.clone(), cell.clone()))
+            .collect::<HashMap<String, String>>()
+    }
 }
 
 fn csv_record_to_vec(row: &csv::StringRecord) -> Vec<String> {
@@ -83,12 +95,6 @@ pub fn read_csv(reader: &mut csv::Reader<std::fs::File>, schema: &CsvSchema) -> 
             Ok(row) => {
                 let line_no = row.position().unwrap().line();
                 let row = csv_record_to_vec(&row);
-
-                println!(
-                    "read row row len. {:?} vs {:?}",
-                    row.len(),
-                    expected_col_len
-                );
 
                 if row.len() != expected_col_len {
                     let result = ErrorRow {

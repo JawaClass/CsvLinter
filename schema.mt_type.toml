@@ -18,6 +18,26 @@ dtype = "enum"
 required = true
 values = ["ch", "chf", "chi", "f", "i", "fn", "na", "th", "cp", "lb"]
 
+[[columns.overrides]] # nested array of tables
+required = false
+dtype = "enum"
+values = [""]
+# if this condition is true, applyt this override colum schema
+# later allow cross table conditions with {table}.{column}
+
+condition = { or = [
+    { or = [
+        { column = "name", eq = "GType" },
+        { column = "name", eq = "GMode" },
+        { column = "name", eq = "GAlign" },
+    ] },
+    { and = [
+        { column = "name", eq = "GAlign" },
+    ] },
+] }
+
+# END>>>
+
 [[columns]]
 name = "default"
 dtype = "string"

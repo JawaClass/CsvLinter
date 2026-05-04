@@ -85,6 +85,11 @@ impl CachedCsvWorkspace {
         self.csv(csv_filename).load()?;
         self.prepare_fk_validation_for(csv_filename)?;
         self.csv(csv_filename).prepare_validation()?;
+
+        let schema = &self.csv(&csv_filename).schema;
+
+        println!("CSV Schema of File: {:?}", csv_filename);
+        println!("{:#?}", schema);
         self.validate_csv(csv_filename);
         Ok(())
     }

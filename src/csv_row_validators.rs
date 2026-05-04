@@ -129,9 +129,13 @@ impl CsvValidator {
 
         let row_map = self.build_row_map(row, schema);
 
+
+
         let mut cell_violations = Vec::new();
         for (col_idx, column_schema) in schema.columns.iter().enumerate() {
             let cell_value = &row.cells[col_idx];
+
+            column_schema.dtype
 
             let result = column_schema.dtype.eval_value(cell_value, &row_map);
 
@@ -196,8 +200,6 @@ impl CsvValidator {
          */
 
         let cell_violations = self.validate_row_cells(schema, row);
-
-        // let (unique_results, row_) = self.validate_row_unique_constraints(schema, row);
 
         let fk_violations = self.validate_foreign_key_constraints(row, csv_mapping, schema);
 

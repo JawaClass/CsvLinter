@@ -80,6 +80,84 @@ pub struct SchemaUniqueConstraint {
     pub name: String,
 }
 
+pub trait Conditional {
+    fn evaluate(&self, row: &HashMap<String, String>) -> bool;
+    // fn columns_referenced(&self) -> Vec<&str>;
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Leaf {
+    pub column: String,
+    #[serde(flatten)]
+    pub op: Op,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Or {
+    pub or: Vec<CsvCondition>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct And {
+    pub and: Vec<CsvCondition>,
+}
+
+impl Conditional for Leaf {
+    fn evaluate(&self, row: &HashMap<String, String>) -> bool {
+        let column = &self.column;
+        let cell = row.get(column).unwrap();
+        match &self.op {
+            Op::Eq(value) => cell == value,
+        }
+    }
+}
+
+impl Conditional for Or {
+    fn evaluate(&self, row: &HashMap<String, String>) -> bool {
+        self.or.iter().any(|c| c.evaluate(row))
+    }
+}
+
+impl Conditional for And {
+    fn evaluate(&self, row: &HashMap<String, String>) -> bool {
+        self.and.iter().all(|c| c.evaluate(row))
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(untagged)]
+pub enum CsvCondition {
+    Leaf(Leaf),
+    And(And),
+    Or(Or),
+}
+
+impl Conditional for CsvCondition {
+    fn evaluate(&self, row: &HashMap<String, String>) -> bool {
+        match self {
+            CsvCondition::Leaf(l) => l.evaluate(row),
+            CsvCondition::Or(o) => o.evaluate(row),
+            CsvCondition::And(a) => a.evaluate(row),
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub enum Op {
+    #[serde(rename = "eq")]
+    Eq(String),
+    // add more ops here: ne, lt, gt, etc.
+}
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct CsvColumnSchemaOverride {
+    #[serde(default)]
+    pub required: Option<bool>,
+    #[serde(flatten)]
+    pub dtype: ColumnType,
+    pub condition: CsvCondition,
+}
+
 #[derive(Debug, Deserialize, Clone)]
 pub struct CsvColumnSchema {
     pub name: String,
@@ -87,6 +165,8 @@ pub struct CsvColumnSchema {
     pub required: Option<bool>,
     #[serde(flatten)]
     pub dtype: ColumnType,
+    // overrides
+    pub overrides: Option<Vec<CsvColumnSchemaOverride>>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
